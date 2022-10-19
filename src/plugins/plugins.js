@@ -83,6 +83,7 @@ define([
     './timelist/plugin',
     './faultManagement/FaultManagementPlugin',
     '../../example/simpleVuePlugin/plugin',
+    '../../example/mapVuePlugin/plugin',
     '../../example/exampleTags/plugin'
 ], function (
     _,
@@ -147,6 +148,7 @@ define([
     TimeList,
     FaultManagementPlugin,
     SimpleVuePlugin,
+    MapVuePlugin,
     ExampleTags
 ) {
     const plugins = {};
@@ -159,6 +161,7 @@ define([
     plugins.example.ExampleTags = ExampleTags.default;
     plugins.example.Generator = () => GeneratorPlugin;
     plugins.example.SimpleVuePlugin = SimpleVuePlugin.default;
+    plugins.example.MapVuePlugin = MapVuePlugin.default;
 
     plugins.UTCTimeSystem = UTCTimeSystem.default;
     plugins.LocalTimeSystem = LocalTimeSystem;

@@ -89,6 +89,10 @@ const config = {
                     }
                 },
                 {
+                    from: 'example/mapVuePlugin/images',
+                    to: 'images'
+                },
+                {
                     from: 'src/plugins/imagery/layers',
                     to: 'imagery'
                 }

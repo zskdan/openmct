@@ -101,8 +101,8 @@ function MapVuePlugin() {
 		domainObject.composition = [];
 		domainObject.configuration = {
 		    mapController: {
-			lon: 49.1193089,
-			lat: 6.1757156
+			lat: 6.1757156,
+			lon: 49.1193089
 		    }
 		};
 	    },
@@ -111,10 +111,10 @@ function MapVuePlugin() {
 		    name: "Latitude Center of Map",
 		    control: "textfield",
 		    cssClass: "l-input-lg",
-		    key: "init.lat",
+		    key: "lat",
 		    property: [
 			"configuration", 
-			"gaugeController",
+			"mapController",
 			"lat"
 		    ]
 		},
@@ -122,10 +122,10 @@ function MapVuePlugin() {
 		    name: "Longitude Center of Map",
 		    control: "textfield",
 		    cssClass: "l-input-lg",
-		    key: "init.lon",
+		    key: "lon",
 		    property: [
 			"configuration", 
-			"gaugeController",
+			"mapController",
 			"lon"
 		    ]
 		}

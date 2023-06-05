@@ -15,6 +15,7 @@
 <script>
 import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
 import { icon } from 'leaflet';
+import myIcon from './images/rocket.png';
 
 export default {
   components: {
@@ -32,7 +33,7 @@ export default {
       lat: mapController.lat,
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       icon: icon({
-	iconUrl: "dist/images/rocket.png",
+	iconUrl: myIcon,
 	iconSize: [64, 64],
 	})
     };

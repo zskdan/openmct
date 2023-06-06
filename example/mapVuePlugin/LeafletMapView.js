@@ -1,10 +1,7 @@
-define([
-    './LeafletMap.vue',
-    'vue'
-], function (
-    LeafletMap,
-    Vue
-) {
+import App from './LeafletMap.vue';
+import Vue from 'vue';
+
+export default class LeafletMapView {
     Vue = Vue.default || Vue;
     let component;
     function LeafletMapView(domainObject, openmct, document) {
@@ -34,4 +31,4 @@ define([
 	component = undefined;
     };
     return LeafletMapView;
-});
+}

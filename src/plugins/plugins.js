@@ -84,6 +84,7 @@ define([
     './faultManagement/FaultManagementPlugin',
     '../../example/simpleVuePlugin/plugin',
     '../../example/mapVuePlugin/plugin',
+    '../../example/leafletmap/plugin',
     '../../example/exampleTags/plugin'
 ], function (
     _,
@@ -149,6 +150,7 @@ define([
     FaultManagementPlugin,
     SimpleVuePlugin,
     MapVuePlugin,
+    LeafletMapPlugin,
     ExampleTags
 ) {
     const plugins = {};
@@ -162,6 +164,7 @@ define([
     plugins.example.Generator = () => GeneratorPlugin;
     plugins.example.SimpleVuePlugin = SimpleVuePlugin.default;
     plugins.example.MapVuePlugin = MapVuePlugin.default;
+    plugins.example.LeafletMapPlugin = LeafletMapPlugin.default;
 
     plugins.UTCTimeSystem = UTCTimeSystem.default;
     plugins.LocalTimeSystem = LocalTimeSystem;

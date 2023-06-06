@@ -27,57 +27,6 @@ function MapVuePlugin() {
 			    },
 			    template: '<app></app>'
 			});
-	
-/*		   
-			component = new Vue(App);
-                        element.appendChild(component.$mount().$el);
-			*/
-		
-			/*
-			var init_lat = domain["init.lat"];
-			if (typeof (init_lat) === "string") {
-			    init_lat = parseFloat(init_lat);
-			};
-                                
-			var init_lng = domain["init.lng"];
-			if (typeof (init_lng) === "string") {
-			    init_lng = parseFloat(init_lng);
-			};
-			console.log("init_lng " + init_lng)
-			console.log("init_lat " + init_lat)
-			component.latlng = [init_lng,init_lat];
-			composition.forEach((id, index) => {
-			    openmct.objects.get(id).then(function (cDomain) {
-				var allTelemetry = [];
-				if (cDomain.telemetry && cDomain.telemetry.values) {
-				    allTelemetry = cDomain.telemetry.values.filter((value) => value.format === "float");
-				}
-
-				var first = (allTelemetry.length > 0) ? allTelemetry[0] : null;
-
-				subscriptions[index] = openmct.telemetry.subscribe(cDomain, function (data) {
-				    if (!first) {
-					return;
-				    }
-
-				    var value = data[first.source || first.key];
-				    //console.log(String(id.key).includes("gps"))
-				    if (typeof (value) === "string") {
-					value = parseFloat(value);
-				    }
-
-				    if (typeof (value) === "number" && String(id.key).includes("lat")) {
-					component.lat = value;
-				    }
-
-				    if (typeof (value) === "number" && String(id.key).includes("lng")) {
-					component.lon = value;
-				    }
-
-				});
-			    });
-			});
-			*/
                     },
                     destroy: function (element) {
 			component.$destroy();
@@ -88,7 +37,6 @@ function MapVuePlugin() {
 	    },
 	    priority: function () {
 		return 1;
-
 	    }
 	});
 	openmct.types.addType('map', {

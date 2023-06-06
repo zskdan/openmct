@@ -1,29 +1,50 @@
-import LeafletMapView from './LeafletMapView';
+import Vue from 'vue';
+import App from './App.vue';
 
-function MapVuePlugin() {
-    'use strict';
+function LeafletMapPlugin() {
     return function install(openmct) {
-	console.log("ZSK:install");
 	openmct.objectViews.addProvider({
+	    key: "leafletmap",
 	    name: "Leaflet Map",
-	    key: "plugin.leafletmap",
 	    cssClass: "icon-object",
 	    canView: function (domainObject) {
-		console.log("ZSK:canview:"+(domainObject.type === 'plugin.leafletmap'));
-		return domainObject.type === 'plugin.leafletmap';
+		return domainObject.type === 'leafletmap';
 	    },
 	    view: function (domainObject) {
-		console.log("ZSK:view");
-		return new LeafletMapView(domainObject, openmct, document);
+		let component;
+
+                return {
+		    show: function (element) {
+			component = new Vue({
+			    el: element,
+			    components: {
+				App
+			    },
+			    provide: {
+				openmct,
+				domainObject,
+				composition: openmct.composition.get(domainObject)
+			    },
+			    template: '<app></app>'
+			});
+                    },
+                    destroy: function (element) {
+			component.$destroy();
+			component = undefined;
+                    }
+                };
+
+	    },
+	    priority: function () {
+		return 1;
 	    }
 	});
-
-	openmct.types.addType('plugin.leafletmap', {
+	openmct.types.addType('leafletmap', {
 	    name: 'Leaflet Map',
-	    key: 'plugin.leafletmap',
-	    cssClass: "icon-box-round-corners",
-	    description: 'Geopositioning for an object with latitude, longitude',
 	    creatable: true,
+	    description: 'Geopositioning for an object with latitude, longitude',
+	    //key: 'plugin.leafletmap',
+	    cssClass: "icon-box-round-corners",
 	    initialize(domainObject) {
 		domainObject.composition = [];
 		domainObject.configuration = {
@@ -79,4 +100,4 @@ function MapVuePlugin() {
     };
 }
 
-export default MapVuePlugin;
+export default LeafletMapPlugin;

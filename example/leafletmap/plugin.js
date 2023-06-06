@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './App.vue';
+import App from './LeafletMap.vue';
 
 function LeafletMapPlugin() {
     return function install(openmct) {

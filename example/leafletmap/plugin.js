@@ -1,8 +1,9 @@
-import Vue from 'vue';
-import App from './LeafletMap.vue';
-
-function LeafletMapPlugin() {
-    return function install(openmct) {
+define([
+    './LeafletMapView'
+], function (
+    LeafletMapView 
+) {
+    return function (openmct) {
 	openmct.objectViews.addProvider({
 	    key: "leafletmap",
 	    name: "Leaflet Map",
@@ -11,6 +12,7 @@ function LeafletMapPlugin() {
 		return domainObject.type === 'leafletmap';
 	    },
 	    view: function (domainObject) {
+	    /*
 		let component;
 
                 return {
@@ -33,13 +35,12 @@ function LeafletMapPlugin() {
 			component = undefined;
                     }
                 };
-
-	    },
-	    priority: function () {
-		return 1;
+	    */
+		return new LeafletMapView(domainObject, openmct);
 	    }
 	});
 	openmct.types.addType('leafletmap', {
+	    key: 'leafletmap',
 	    name: 'Leaflet Map',
 	    creatable: true,
 	    description: 'Geopositioning for an object with latitude, longitude',
@@ -98,6 +99,5 @@ function LeafletMapPlugin() {
 	    ]
 	});
     };
-}
+});
 
-export default LeafletMapPlugin;

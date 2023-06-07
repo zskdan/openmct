@@ -1,34 +1,43 @@
-import App from './LeafletMap.vue';
-import Vue from 'vue';
-
-export default class LeafletMapView {
+define([
+    './LeafletMap.vue',
+    'vue'
+], function (
+    App,
+    Vue
+) {
     Vue = Vue.default || Vue;
     let component;
-    function LeafletMapView(domainObject, openmct, document) {
+    function LeafletMapView(domainObject, openmct) {
 	this.domainObject = domainObject;
 	this.openmct = openmct;
         this.objectAPI = openmct.objects;
-	this.document = document;
     }
 
-    LeafletMapView.prototype.show = function (domainObject) {
-    	console.log("ZSK:show");
+    LeafletMapView.prototype.show = function (element) {
 	component = new Vue({
-	    el: domainObject,
+	    el: element,
 	    components: {
-		LeafletMap
+		App
 	    },
 	    provide: {
 		openmct,
-		domainObject,
-		composition: openmct.composition.get(domainObject)
-	    }
+		element,
+		composition: openmct.composition.get(element)
+	    },
+	    render: h => h(App), 
+	    template: '<app></app>'
 	});
     };
 
     LeafletMapView.prototype.destroy = function () {
-	component.$destroy();
-	component = undefined;
+    	if (component) {
+	    component.$destroy();
+	    component = undefined;
+	}
     };
+
+    LeafletMapView.prototype.render = function () {
+    };
+
     return LeafletMapView;
-}
+});

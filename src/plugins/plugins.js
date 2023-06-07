@@ -164,7 +164,7 @@ define([
     plugins.example.Generator = () => GeneratorPlugin;
     plugins.example.SimpleVuePlugin = SimpleVuePlugin.default;
     plugins.example.MapVuePlugin = MapVuePlugin.default;
-    plugins.example.LeafletMapPlugin = LeafletMapPlugin.default;
+    plugins.example.LeafletMapPlugin = () => LeafletMapPlugin;
 
     plugins.UTCTimeSystem = UTCTimeSystem.default;
     plugins.LocalTimeSystem = LocalTimeSystem;
